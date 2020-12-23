@@ -12,7 +12,7 @@ import java.util.List;
 public class IPLTestCase
 {
     private String BATSMEN_DATA_FILE = "C:\\Users\\PUNIT BUDANIA\\IdeaProjects\\IPLAnalysis\\src\\test\\resources\\WP DP Data_01 IPL2019FactsheetMostRuns.csv";
-    private String BOWLERS_DATA_FILE = "C:\\Users\\PUNIT BUDANIA\\IdeaProjects\\IPLAnalysis\\src\\test\\resources\\IPL2019FactsheetMostWkts.csv";
+    private String BOWLERS_DATA_FILE = "C:\\Users\\PUNIT BUDANIA\\IdeaProjects\\IPLAnalysis\\src\\test\\resources\\WP DP Data_02 IPL2019FactsheetMostWkts.csv";
     IPLAnalyser iplAnalyser = new IPLAnalyser();
 
     @Test
@@ -90,5 +90,13 @@ public class IPLTestCase
         iplAnalyser.loadBowlersData(BOWLERS_DATA_FILE);
         List<BowlersData> sortedBowlersData = IPLAnalyser.getSortedBestEconomy();
         Assert.assertEquals("Shivam Dube", sortedBowlersData.get(0).getPlayer());
+    }
+
+    @Test
+    public void givenBowlersData_ShouldReturnTopSRWithBestWickets()
+    {
+        iplAnalyser.loadBowlersData(BOWLERS_DATA_FILE);
+        List<BowlersData> sortedBowlersData = IPLAnalyser.getSortedTopSRWithBestWickets();
+        Assert.assertEquals("Kagiso Rabada", sortedBowlersData.get(0).getPlayer());
     }
 }

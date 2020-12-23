@@ -37,11 +37,14 @@ public class BowlersData
     @CsvBindByPosition(position = 10)
     public double strikeRate;
 
-    //@CsvBindByPosition(position = 12)
+    //@CsvBindByPosition(position = 11)
     //public int fourW;
 
-    //@CsvBindByPosition(position = 13)
+    //@CsvBindByPosition(position = 12)
     //public int fiveW;
+
+    @CsvBindByPosition(position = 13)
+    public int wickets;
 
     public String getPlayer()
     {

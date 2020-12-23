@@ -19,6 +19,7 @@ public class IPLAnalyser
     static List<BatsmenData> batsmenDataList = null;
     static List<BatsmenData> sortedList = null;
     static List<BowlersData> bowlersDataList = null;
+    static List<BowlersData> sortedBowlersList = null;
 
     public void loadBatsmenData(String csvFilePath)
     {
@@ -152,6 +153,15 @@ public class IPLAnalyser
         return sortBowlers(batsmenDataComparator);
     }
 
+    public static List<BowlersData> getSortedTopSRWithBestWickets()
+    {
+        Comparator<BowlersData> bowlersDataComparator = Comparator.comparing(bowlersData -> bowlersData.strikeRate);
+        List<BowlersData> sortedTopSR = sortBowlers(bowlersDataComparator);
+        sortedBowlersList = sortedTopSR.stream().limit(20).collect(Collectors.toList());
+        Comparator<BowlersData> bowlersDataComparator1 = Comparator.comparing(bowlersData -> bowlersData.wickets);
+        return sortBowlersFurther(bowlersDataComparator1.reversed());
+    }
+
     private static List<BowlersData> sortBowlers(Comparator comparator)
     {
         for (int i=0; i<bowlersDataList.size()-1; i++)
@@ -168,5 +178,23 @@ public class IPLAnalyser
             }
         }
         return bowlersDataList;
+    }
+
+    private static List<BowlersData> sortBowlersFurther(Comparator comparator)
+    {
+        for (int i=0; i<sortedBowlersList.size()-1; i++)
+        {
+            for (int j=0; j<sortedBowlersList.size()-i-1; j++)
+            {
+                BowlersData census1 = sortedBowlersList.get(j);
+                BowlersData census2 = sortedBowlersList.get(j+1);
+                if(comparator.compare(census1, census2) > 0)
+                {
+                    sortedBowlersList.set(j, census2);
+                    sortedBowlersList.set(j+1, census1);
+                }
+            }
+        }
+        return sortedBowlersList;
     }
 }
