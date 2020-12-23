@@ -140,6 +140,12 @@ public class IPLAnalyser
         return sortBowlers(batsmenDataComparator.reversed());
     }
 
+    public static List<BowlersData> getSortedBestSR()
+    {
+        Comparator<BowlersData> batsmenDataComparator = Comparator.comparing(bowlersData -> bowlersData.strikeRate);
+        return sortBowlers(batsmenDataComparator.reversed());
+    }
+
     private static List<BowlersData> sortBowlers(Comparator comparator)
     {
         for (int i=0; i<bowlersDataList.size()-1; i++)

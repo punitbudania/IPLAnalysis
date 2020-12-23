@@ -34,8 +34,8 @@ public class BowlersData
     //@CsvBindByPosition(position = 9)
     //public double economy;
 
-    //@CsvBindByPosition(position = 10)
-    //public double strikeRate;
+    @CsvBindByPosition(position = 10)
+    public double strikeRate;
 
     //@CsvBindByPosition(position = 12)
     //public int fourW;
