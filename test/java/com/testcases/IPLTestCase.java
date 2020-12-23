@@ -69,6 +69,14 @@ public class IPLTestCase
     }
 
     @Test
+    public void givenBatsmenData_ShouldReturnMax100sWithMostRuns()
+    {
+        iplAnalyser.loadBatsmenData(BATSMEN_DATA_FILE);
+        List<BatsmenData> sortedBatsmenData = IPLAnalyser.getSortedMax100sWithMostRuns();
+        Assert.assertEquals("David Warner ", sortedBatsmenData.get(0).getPlayer());
+    }
+
+    @Test
     public void givenBowlersData_ShouldReturnBestAvg()
     {
         iplAnalyser.loadBowlersData(BOWLERS_DATA_FILE);
@@ -115,4 +123,6 @@ public class IPLTestCase
         List<BowlersData> sortedBowlersData = IPLAnalyser.getSortedTopWicketsWithBestAvg();
         Assert.assertEquals("Kagiso Rabada", sortedBowlersData.get(0).getPlayer());
     }
+
+
 }

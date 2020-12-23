@@ -46,8 +46,8 @@ public class BatsmenData
     public double strikeRate;
 
     //@CsvBindByName(column = "100", required = true)
-    //@CsvBindByPosition(position = 10)
-    //public int hundreds;
+    @CsvBindByPosition(position = 10)
+    public int hundreds;
 
     //@CsvBindByName(column = "50", required = true)
     //@CsvBindByPosition(position = 11)
