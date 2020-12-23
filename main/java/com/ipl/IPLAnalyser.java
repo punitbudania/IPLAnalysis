@@ -43,6 +43,18 @@ public class IPLAnalyser
         return sort(batsmenDataComparator.reversed());
     }
 
+    public static List<BatsmenData> getSorted6s()
+    {
+        Comparator<BatsmenData> batsmenDataComparator = Comparator.comparing(batsmenData -> batsmenData.sixes);
+        return sort(batsmenDataComparator.reversed());
+    }
+
+    public static List<BatsmenData> getSorted4s()
+    {
+        Comparator<BatsmenData> batsmenDataComparator = Comparator.comparing(batsmenData -> batsmenData.fours);
+        return sort(batsmenDataComparator.reversed());
+    }
+
     private static List<BatsmenData> sort(Comparator batsmenDataComparator)
     {
         for (int i=0; i<batsmenDataList.size()-1; i++)

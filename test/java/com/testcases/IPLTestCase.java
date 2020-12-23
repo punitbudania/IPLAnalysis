@@ -32,4 +32,14 @@ public class IPLTestCase
         List<BatsmenData> sortedBatsmenData = IPLAnalyser.getSortedStrikingRates();
         Assert.assertEquals("Ishant Sharma", sortedBatsmenData.get(0).getPlayer());
     }
+
+    @Test
+    public void givenBatsmenData_ShouldReturnMax6sAnd4s()
+    {
+        iplAnalyser.loadBatsmenData(BATSMEN_DATA_FILE);
+        List<BatsmenData> sortedBatsmenData = IPLAnalyser.getSorted6s();
+        Assert.assertEquals("Andre Russell", sortedBatsmenData.get(0).getPlayer());
+        List<BatsmenData> sortedBatsmenData1 = IPLAnalyser.getSorted4s();
+        Assert.assertEquals("Shikhar Dhawan", sortedBatsmenData1.get(0).getPlayer());
+    }
 }

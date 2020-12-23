@@ -54,12 +54,12 @@ public class BatsmenData
     //public int fifties;
 
     //@CsvBindByName(column = "4s", required = true)
-    //@CsvBindByPosition(position = 12)
-    //public int fours;
+    @CsvBindByPosition(position = 12)
+    public int fours;
 
     //@CsvBindByName(column = "6s", required = true)
-    //@CsvBindByPosition(position = 13)
-    //public int sixes;
+    @CsvBindByPosition(position = 13)
+    public int sixes;
 
     public String getPlayer()
     {
