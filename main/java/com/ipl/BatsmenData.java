@@ -42,8 +42,8 @@ public class BatsmenData
     //public int ballFaced;
 
     //@CsvBindByName(column = "SR", required = true)
-    //@CsvBindByPosition(position = 9)
-    //public double strikeRate;
+    @CsvBindByPosition(position = 9)
+    public double strikeRate;
 
     //@CsvBindByName(column = "100", required = true)
     //@CsvBindByPosition(position = 10)

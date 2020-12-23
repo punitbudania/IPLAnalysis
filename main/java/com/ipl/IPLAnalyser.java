@@ -37,6 +37,12 @@ public class IPLAnalyser
         return sort(batsmenDataComparator.reversed());
     }
 
+    public static List<BatsmenData> getSortedStrikingRates()
+    {
+        Comparator<BatsmenData> batsmenDataComparator = Comparator.comparing(batsmenData -> batsmenData.strikeRate);
+        return sort(batsmenDataComparator.reversed());
+    }
+
     private static List<BatsmenData> sort(Comparator batsmenDataComparator)
     {
         for (int i=0; i<batsmenDataList.size()-1; i++)
