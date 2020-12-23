@@ -50,4 +50,12 @@ public class IPLTestCase
         List<BatsmenData> sortedBatsmenData = IPLAnalyser.getSortedTopSRWithMost6s4s();
         Assert.assertEquals("Andre Russell", sortedBatsmenData.get(0).getPlayer());
     }
+
+    @Test
+    public void givenBatsmenData_ShouldReturnTopAvgWithBestSR()
+    {
+        iplAnalyser.loadBatsmenData(BATSMEN_DATA_FILE);
+        List<BatsmenData> sortedBatsmenData = IPLAnalyser.getSortedTopAvgWithBestSR();
+        Assert.assertEquals("Andre Russell", sortedBatsmenData.get(0).getPlayer());
+    }
 }

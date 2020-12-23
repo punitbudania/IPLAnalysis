@@ -62,8 +62,16 @@ public class IPLAnalyser
         Comparator<BatsmenData> batsmenDataComparator = Comparator.comparing(batsmenData -> batsmenData.strikeRate);
         List<BatsmenData> sortedTopSR = sort(batsmenDataComparator.reversed());
         sortedList = sortedTopSR.stream().limit(10).collect(Collectors.toList());
-        System.out.println(sortedList);
         Comparator<BatsmenData> batsmenDataComparator1 = Comparator.comparing(batsmenData -> batsmenData.boundaries);
+        return sortFurther(batsmenDataComparator1.reversed());
+    }
+
+    public static List<BatsmenData> getSortedTopAvgWithBestSR()
+    {
+        Comparator<BatsmenData> batsmenDataComparator = Comparator.comparing(batsmenData -> batsmenData.average);
+        List<BatsmenData> sortedTopAvg = sort(batsmenDataComparator.reversed());
+        sortedList = sortedTopAvg.stream().limit(10).collect(Collectors.toList());
+        Comparator<BatsmenData> batsmenDataComparator1 = Comparator.comparing(batsmenData -> batsmenData.strikeRate);
         return sortFurther(batsmenDataComparator1.reversed());
     }
 
