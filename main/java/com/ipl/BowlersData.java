@@ -22,8 +22,8 @@ public class BowlersData
     //@CsvBindByPosition(position = 5)
     //public int runs;
 
-    //@CsvBindByPosition(position = 6)
-    //public int wickets;
+    @CsvBindByPosition(position = 6)
+    public int wickets;
 
     //@CsvBindByPosition(position = 7)
     //public int bbi;
@@ -44,7 +44,7 @@ public class BowlersData
     //public int fiveW;
 
     @CsvBindByPosition(position = 13)
-    public int wickets;
+    public int bestFigure;
 
     public String getPlayer()
     {

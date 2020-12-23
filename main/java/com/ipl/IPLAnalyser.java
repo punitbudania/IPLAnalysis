@@ -158,7 +158,7 @@ public class IPLAnalyser
         Comparator<BowlersData> bowlersDataComparator = Comparator.comparing(bowlersData -> bowlersData.strikeRate);
         List<BowlersData> sortedTopSR = sortBowlers(bowlersDataComparator);
         sortedBowlersList = sortedTopSR.stream().limit(20).collect(Collectors.toList());
-        Comparator<BowlersData> bowlersDataComparator1 = Comparator.comparing(bowlersData -> bowlersData.wickets);
+        Comparator<BowlersData> bowlersDataComparator1 = Comparator.comparing(bowlersData -> bowlersData.bestFigure);
         return sortBowlersFurther(bowlersDataComparator1.reversed());
     }
 
@@ -169,6 +169,15 @@ public class IPLAnalyser
         sortedBowlersList = sortedTopSR.stream().limit(20).collect(Collectors.toList());
         Comparator<BowlersData> bowlersDataComparator1 = Comparator.comparing(bowlersData -> bowlersData.strikeRate);
         return sortBowlersFurther(bowlersDataComparator1.reversed());
+    }
+
+    public static List<BowlersData> getSortedTopWicketsWithBestAvg()
+    {
+        Comparator<BowlersData> bowlersDataComparator = Comparator.comparing(bowlersData -> bowlersData.wickets);
+        List<BowlersData> sortedTopSR = sortBowlers(bowlersDataComparator.reversed());
+        sortedBowlersList = sortedTopSR.stream().limit(10).collect(Collectors.toList());
+        Comparator<BowlersData> bowlersDataComparator1 = Comparator.comparing(bowlersData -> bowlersData.average);
+        return sortBowlersFurther(bowlersDataComparator1);
     }
 
     private static List<BowlersData> sortBowlers(Comparator comparator)
