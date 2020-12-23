@@ -26,8 +26,8 @@ public class BatsmenData
     //public int notOuts;
 
     //@CsvBindByName(column = "Runs", required = true)
-    //@CsvBindByPosition(position = 5)
-    //public int runs;
+    @CsvBindByPosition(position = 5)
+    public int runs;
 
     //@CsvBindByName(column = "HS", required = true)
     //@CsvBindByPosition(position = 6)
