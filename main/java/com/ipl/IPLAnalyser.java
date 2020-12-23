@@ -146,6 +146,12 @@ public class IPLAnalyser
         return sortBowlers(batsmenDataComparator.reversed());
     }
 
+    public static List<BowlersData> getSortedBestEconomy()
+    {
+        Comparator<BowlersData> batsmenDataComparator = Comparator.comparing(bowlersData -> bowlersData.economy);
+        return sortBowlers(batsmenDataComparator);
+    }
+
     private static List<BowlersData> sortBowlers(Comparator comparator)
     {
         for (int i=0; i<bowlersDataList.size()-1; i++)

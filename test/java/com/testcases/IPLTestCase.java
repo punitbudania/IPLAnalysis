@@ -83,4 +83,12 @@ public class IPLTestCase
         List<BowlersData> sortedBowlersData = IPLAnalyser.getSortedBestSR();
         Assert.assertEquals("Krishnappa Gowtham", sortedBowlersData.get(0).getPlayer());
     }
+
+    @Test
+    public void givenBowlersData_ShouldReturnBestEconomy()
+    {
+        iplAnalyser.loadBowlersData(BOWLERS_DATA_FILE);
+        List<BowlersData> sortedBowlersData = IPLAnalyser.getSortedBestEconomy();
+        Assert.assertEquals("Shivam Dube", sortedBowlersData.get(0).getPlayer());
+    }
 }
