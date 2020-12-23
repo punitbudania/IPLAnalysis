@@ -5,6 +5,7 @@ import com.jarfile.CSVBuilderException;
 import com.jarfile.CSVBuilderFactory;
 import com.jarfile.ICSVBuilder;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -17,6 +18,7 @@ public class IPLAnalyser
 {
     static List<BatsmenData> batsmenDataList = null;
     static List<BatsmenData> sortedList = null;
+    static List<BowlersData> bowlersDataList = null;
 
     public void loadBatsmenData(String csvFilePath)
     {
@@ -118,5 +120,41 @@ public class IPLAnalyser
             }
         }
         return sortedList;
+    }
+
+    public void loadBowlersData(String bowlers_data_file)
+    {
+        try (Reader reader = Files.newBufferedReader(Paths.get(bowlers_data_file)))
+        {
+            ICSVBuilder icsvBuilder = CSVBuilderFactory.createCSVBuilder();
+            bowlersDataList = icsvBuilder.getCSVFileList(reader, BowlersData.class);
+        }
+        catch (IOException | CSVBuilderException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<BowlersData> getSortedBestAvg()
+    {
+        Comparator<BowlersData> batsmenDataComparator = Comparator.comparing(bowlersData -> bowlersData.average);
+        return sortBowlers(batsmenDataComparator.reversed());
+    }
+
+    private static List<BowlersData> sortBowlers(Comparator comparator)
+    {
+        for (int i=0; i<bowlersDataList.size()-1; i++)
+        {
+            for (int j=0; j<bowlersDataList.size()-i-1; j++)
+            {
+                BowlersData census1 = bowlersDataList.get(j);
+                BowlersData census2 = bowlersDataList.get(j+1);
+                if(comparator.compare(census1, census2) > 0)
+                {
+                    bowlersDataList.set(j, census2);
+                    bowlersDataList.set(j+1, census1);
+                }
+            }
+        }
+        return bowlersDataList;
     }
 }

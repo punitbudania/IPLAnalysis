@@ -2,6 +2,7 @@ package com.testcases;
 
 import com.google.gson.Gson;
 import com.ipl.BatsmenData;
+import com.ipl.BowlersData;
 import com.ipl.IPLAnalyser;
 import org.junit.Assert;
 import org.junit.Test;
@@ -65,5 +66,13 @@ public class IPLTestCase
         iplAnalyser.loadBatsmenData(BATSMEN_DATA_FILE);
         List<BatsmenData> sortedBatsmenData = IPLAnalyser.getSortedTopRunsWithBestAvg();
         Assert.assertEquals("David Warner ", sortedBatsmenData.get(0).getPlayer());
+    }
+
+    @Test
+    public void givenBowlersData_ShouldReturnBestAvg()
+    {
+        iplAnalyser.loadBowlersData(BOWLERS_DATA_FILE);
+        List<BowlersData> sortedBowlersData = IPLAnalyser.getSortedBestAvg();
+        Assert.assertEquals("Prasidh Krishna", sortedBowlersData.get(0).getPlayer());
     }
 }

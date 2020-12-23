@@ -1,45 +1,50 @@
 package com.ipl;
 
-import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindByPosition;
 
 public class BowlersData
 {
-    @CsvBindByName(column = "POS", required = true)
-    public int pos;
+    //@CsvBindByPosition(position = 0)
+    //public String pos;
 
-    @CsvBindByName(column = "Player", required = true)
+    @CsvBindByPosition(position = 1)
     public String player;
 
-    @CsvBindByName(column = "Mat", required = true)
-    public int matches;
+    //@CsvBindByPosition(position = 2)
+    //public int matches;
 
-    @CsvBindByName(column = "Inns", required = true)
-    public int innings;
+    //@CsvBindByPosition(position = 3)
+    //public int innings;
 
-    @CsvBindByName(column = "Ov", required = true)
-    public double overs;
+    //@CsvBindByPosition(position = 4)
+    //public int overs;
 
-    @CsvBindByName(column = "Runs", required = true)
-    public int runs;
+    //@CsvBindByPosition(position = 5)
+    //public int runs;
 
-    @CsvBindByName(column = "Wkts", required = true)
-    public int wickets;
+    //@CsvBindByPosition(position = 6)
+    //public int wickets;
 
-    @CsvBindByName(column = "BBI", required = true)
-    public int bbi;
+    //@CsvBindByPosition(position = 7)
+    //public int bbi;
 
-    @CsvBindByName(column = "Avg", required = true)
-    public double average;
+    @CsvBindByPosition(position = 8)
+    public String average;
 
-    @CsvBindByName(column = "Econ", required = true)
-    public double economy;
+    //@CsvBindByPosition(position = 9)
+    //public double economy;
 
-    @CsvBindByName(column = "SR", required = true)
-    public double strikeRate;
+    //@CsvBindByPosition(position = 10)
+    //public double strikeRate;
 
-    @CsvBindByName(column = "4w", required = true)
-    public int fourW;
+    //@CsvBindByPosition(position = 12)
+    //public int fourW;
 
-    @CsvBindByName(column = "5w", required = true)
-    public int fiveW;
+    //@CsvBindByPosition(position = 13)
+    //public int fiveW;
+
+    public String getPlayer()
+    {
+        return player;
+    }
 }
