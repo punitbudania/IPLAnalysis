@@ -64,6 +64,9 @@ public class BatsmenData
     @CsvBindByPosition(position = 14)
     public int boundaries;
 
+    @CsvBindByPosition(position = 15)
+    public int bestFigures;
+
     public String getPlayer()
     {
         return player;

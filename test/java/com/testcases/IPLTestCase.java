@@ -77,6 +77,14 @@ public class IPLTestCase
     }
 
     @Test
+    public void givenBatsmenData_ShouldReturnZero100s50sWithBestAvg()
+    {
+        iplAnalyser.loadBatsmenData(BATSMEN_DATA_FILE);
+        List<BatsmenData> sortedBatsmenData = IPLAnalyser.getSortedZero100s50sWithBestAvg();
+        Assert.assertEquals("Marcus Stoinis", sortedBatsmenData.get(0).getPlayer());
+    }
+
+    @Test
     public void givenBowlersData_ShouldReturnBestAvg()
     {
         iplAnalyser.loadBowlersData(BOWLERS_DATA_FILE);

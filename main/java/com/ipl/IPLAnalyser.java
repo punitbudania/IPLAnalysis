@@ -96,6 +96,15 @@ public class IPLAnalyser
         return sortFurther(batsmenDataComparator1.reversed());
     }
 
+    public static List<BatsmenData> getSortedZero100s50sWithBestAvg()
+    {
+        Comparator<BatsmenData> batsmenDataComparator = Comparator.comparing(batsmenData -> batsmenData.bestFigures);
+        List<BatsmenData> sortedTopAvg = sort(batsmenDataComparator);
+        sortedList = sortedTopAvg.stream().limit(56).collect(Collectors.toList());
+        Comparator<BatsmenData> batsmenDataComparator1 = Comparator.comparing(batsmenData -> batsmenData.average);
+        return sortFurther(batsmenDataComparator1.reversed());
+    }
+
     private static List<BatsmenData> sort(Comparator comparator)
     {
         for (int i=0; i<batsmenDataList.size()-1; i++)
