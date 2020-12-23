@@ -11,10 +11,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class IPLAnalyser
 {
     static List<BatsmenData> batsmenDataList = null;
+    static List<BatsmenData> sortedList = null;
 
     public void loadBatsmenData(String csvFilePath)
     {
@@ -55,7 +57,17 @@ public class IPLAnalyser
         return sort(batsmenDataComparator.reversed());
     }
 
-    private static List<BatsmenData> sort(Comparator batsmenDataComparator)
+    public static List<BatsmenData> getSortedTopSRWithMost6s4s()
+    {
+        Comparator<BatsmenData> batsmenDataComparator = Comparator.comparing(batsmenData -> batsmenData.strikeRate);
+        List<BatsmenData> sortedTopSR = sort(batsmenDataComparator.reversed());
+        sortedList = sortedTopSR.stream().limit(10).collect(Collectors.toList());
+        System.out.println(sortedList);
+        Comparator<BatsmenData> batsmenDataComparator1 = Comparator.comparing(batsmenData -> batsmenData.boundaries);
+        return sortFurther(batsmenDataComparator1.reversed());
+    }
+
+    private static List<BatsmenData> sort(Comparator comparator)
     {
         for (int i=0; i<batsmenDataList.size()-1; i++)
         {
@@ -63,7 +75,7 @@ public class IPLAnalyser
             {
                 BatsmenData census1 = batsmenDataList.get(j);
                 BatsmenData census2 = batsmenDataList.get(j+1);
-                if(batsmenDataComparator.compare(census1, census2) > 0)
+                if(comparator.compare(census1, census2) > 0)
                 {
                     batsmenDataList.set(j, census2);
                     batsmenDataList.set(j+1, census1);
@@ -71,5 +83,23 @@ public class IPLAnalyser
             }
         }
         return batsmenDataList;
+    }
+
+    private static List<BatsmenData> sortFurther(Comparator comparator)
+    {
+        for (int i=0; i<sortedList.size()-1; i++)
+        {
+            for (int j=0; j<sortedList.size()-i-1; j++)
+            {
+                BatsmenData census1 = sortedList.get(j);
+                BatsmenData census2 = sortedList.get(j+1);
+                if(comparator.compare(census1, census2) > 0)
+                {
+                    sortedList.set(j, census2);
+                    sortedList.set(j+1, census1);
+                }
+            }
+        }
+        return sortedList;
     }
 }
