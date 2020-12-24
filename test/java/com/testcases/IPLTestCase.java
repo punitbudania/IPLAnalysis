@@ -152,8 +152,39 @@ public class IPLTestCase
                     break;
                 }
             }
+            if(found == true)
+            {
+                break;
+            }
         }
-        if(found == false) temp = "punit";
-        Assert.assertEquals("Kieron Pollard", temp);
+        Assert.assertEquals("Marcus Stoinis", temp);
+    }
+
+    @Test
+    public void givenIPLData_ShouldReturnBestAllrounder()
+    {
+        iplAnalyser.loadBatsmenData(BATSMEN_DATA_FILE);
+        iplAnalyser.loadBowlersData(BOWLERS_DATA_FILE);
+        List<BowlersData> sortedBowlersData = IPLAnalyser.getSortedTopWickets();
+        List<BatsmenData> sortedBatsmenData = IPLAnalyser.getSortedTopRuns();
+        boolean found = false;
+        String temp = null;
+        for(int i=0; i<10; i++)
+        {
+            for(int j=0; j<25; j++)
+            {
+                temp = sortedBatsmenData.get(i).getPlayer();
+                if(temp.equals(sortedBowlersData.get(j).getPlayer()))
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if(found == true)
+            {
+                break;
+            }
+        }
+        Assert.assertEquals("Andre Russell", temp);
     }
 }

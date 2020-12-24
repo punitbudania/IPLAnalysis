@@ -60,6 +60,12 @@ public class IPLAnalyser
         return sort(batsmenDataComparator.reversed());
     }
 
+    public static List<BatsmenData> getSortedTopRuns()
+    {
+        Comparator<BatsmenData> batsmenDataComparator = Comparator.comparing(batsmenData -> batsmenData.runs);
+        return sort(batsmenDataComparator.reversed());
+    }
+
     public static List<BatsmenData> getSortedTopSRWithMost6s4s()
     {
         Comparator<BatsmenData> batsmenDataComparator = Comparator.comparing(batsmenData -> batsmenData.strikeRate);
@@ -169,6 +175,12 @@ public class IPLAnalyser
     {
         Comparator<BowlersData> batsmenDataComparator = Comparator.comparing(bowlersData -> bowlersData.economy);
         return sortBowlers(batsmenDataComparator);
+    }
+
+    public static List<BowlersData> getSortedTopWickets()
+    {
+        Comparator<BowlersData> batsmenDataComparator = Comparator.comparing(bowlersData -> bowlersData.wickets);
+        return sortBowlers(batsmenDataComparator.reversed());
     }
 
     public static List<BowlersData> getSortedTopSRWithBestWickets()
