@@ -1,11 +1,9 @@
 package com.ipl;
 
-import com.google.gson.Gson;
 import com.jarfile.CSVBuilderException;
 import com.jarfile.CSVBuilderFactory;
 import com.jarfile.ICSVBuilder;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -37,8 +35,6 @@ public class IPLAnalyser
     public static List<BatsmenData> getSortedBattingAvgs()
     {
         Comparator<BatsmenData> batsmenDataComparator = Comparator.comparing(batsmenData -> batsmenData.average);
-        //System.out.println(sort(batsmenDataComparator));
-        //String sortedBattingAvgs = new Gson().toJson(batsmenDataList);
         return sort(batsmenDataComparator.reversed());
     }
 

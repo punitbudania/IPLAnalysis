@@ -1,6 +1,5 @@
 package com.testcases;
 
-import com.google.gson.Gson;
 import com.ipl.BatsmenData;
 import com.ipl.BowlersData;
 import com.ipl.IPLAnalyser;
@@ -18,11 +17,8 @@ public class IPLTestCase
     @Test
     public void givenBatsmenData_ShouldReturnTopBattingAvg()
     {
-        //iplAnalyser = new IPLAnalyser();
         iplAnalyser.loadBatsmenData(BATSMEN_DATA_FILE);
         List<BatsmenData> sortedBatsmenData = IPLAnalyser.getSortedBattingAvgs();
-        //BatsmenData[] batsmenCSV = new Gson().fromJson(sortedBatsmenData, BatsmenData[].class);
-        //Assert.assertEquals("MS Dhoni", batsmenCSV[0].player);
         Assert.assertEquals("MS Dhoni", sortedBatsmenData.get(0).getPlayer());
     }
 
