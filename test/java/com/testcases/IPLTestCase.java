@@ -89,7 +89,7 @@ public class IPLTestCase
     {
         iplAnalyser.loadBowlersData(BOWLERS_DATA_FILE);
         List<BowlersData> sortedBowlersData = IPLAnalyser.getSortedBestAvg();
-        Assert.assertEquals("Prasidh Krishna", sortedBowlersData.get(0).getPlayer());
+        Assert.assertEquals("Shivam Dube", sortedBowlersData.get(0).getPlayer());
     }
 
     @Test
@@ -132,5 +132,28 @@ public class IPLTestCase
         Assert.assertEquals("Kagiso Rabada", sortedBowlersData.get(0).getPlayer());
     }
 
-
+    @Test
+    public void givenIPLData_ShouldReturnBestBattingBowlingAvg()
+    {
+        iplAnalyser.loadBatsmenData(BATSMEN_DATA_FILE);
+        iplAnalyser.loadBowlersData(BOWLERS_DATA_FILE);
+        List<BowlersData> sortedBowlersData = IPLAnalyser.getSortedBestAvg();
+        List<BatsmenData> sortedBatsmenData = IPLAnalyser.getSortedBattingAvgs();
+        boolean found = false;
+        String temp = null;
+        for(int i=0; i<20; i++)
+        {
+            for(int j=0; j<20; j++)
+            {
+                temp = sortedBatsmenData.get(i).getPlayer();
+                if(temp.equals(sortedBowlersData.get(j).getPlayer()))
+                {
+                    found = true;
+                    break;
+                }
+            }
+        }
+        if(found == false) temp = "punit";
+        Assert.assertEquals("Kieron Pollard", temp);
+    }
 }
